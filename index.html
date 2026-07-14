@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CSS Flexbox & Grid Explorer — a complete visual guide to learning CSS Flexbox and CSS Grid with live demos, syntax, and real-world examples." />
+  <title>CSS Flexbox &amp; Grid Explorer</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       STICKY HEADER + NAVIGATION
+       ============================================================ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">⬚</span>
+        <span class="brand-text">Flex &amp; Grid<span class="brand-accent">.Explorer</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#flexbox-basics">Flexbox</a>
+        <a href="#flex-container">Container</a>
+        <a href="#flex-items">Items</a>
+        <a href="#flex-examples">Examples</a>
+        <a href="#grid-basics">Grid</a>
+        <a href="#grid-container">Grid C.</a>
+        <a href="#grid-items">Grid I.</a>
+        <a href="#grid-examples">Layouts</a>
+        <a href="#comparison">vs</a>
+        <a href="#challenges">Challenges</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout" id="top">
+
+    <!-- ============================================================
+         STICKY SIDEBAR
+         ============================================================ -->
+    <aside class="sidebar" aria-label="Table of contents">
+      <h2 class="sidebar-title">Contents</h2>
+      <nav aria-label="Section navigation">
+        <ul class="toc">
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#flexbox-basics">1. Flexbox Basics</a></li>
+          <li><a href="#flex-container">2. Flex Container</a>
+            <ul>
+              <li><a href="#prop-display">display</a></li>
+              <li><a href="#prop-flex-direction">flex-direction</a></li>
+              <li><a href="#prop-flex-wrap">flex-wrap</a></li>
+              <li><a href="#prop-flex-flow">flex-flow</a></li>
+              <li><a href="#prop-justify-content">justify-content</a></li>
+              <li><a href="#prop-align-items">align-items</a></li>
+              <li><a href="#prop-align-content">align-content</a></li>
+              <li><a href="#prop-gap">gap</a></li>
+            </ul>
+          </li>
+          <li><a href="#flex-items">3. Flex Items</a>
+            <ul>
+              <li><a href="#prop-order">order</a></li>
+              <li><a href="#prop-flex-grow">flex-grow</a></li>
+              <li><a href="#prop-flex-shrink">flex-shrink</a></li>
+              <li><a href="#prop-flex-basis">flex-basis</a></li>
+              <li><a href="#prop-flex">flex</a></li>
+              <li><a href="#prop-align-self">align-self</a></li>
+            </ul>
+          </li>
+          <li><a href="#flex-examples">4. Flexbox Examples</a></li>
+          <li><a href="#grid-basics">5. Grid Basics</a></li>
+          <li><a href="#grid-container">6. Grid Container</a>
+            <ul>
+              <li><a href="#prop-gt-columns">grid-template-columns</a></li>
+              <li><a href="#prop-gt-rows">grid-template-rows</a></li>
+              <li><a href="#prop-repeat">repeat()</a></li>
+              <li><a href="#prop-minmax">minmax()</a></li>
+              <li><a href="#prop-areas">grid-template-areas</a></li>
+              <li><a href="#prop-auto-flow">grid-auto-flow</a></li>
+              <li><a href="#prop-justify-items">justify-items</a></li>
+              <li><a href="#prop-align-items-grid">align-items</a></li>
+              <li><a href="#prop-justify-content-grid">justify-content</a></li>
+              <li><a href="#prop-gap-grid">gap</a></li>
+            </ul>
+          </li>
+          <li><a href="#grid-items">7. Grid Items</a></li>
+          <li><a href="#grid-examples">8. Grid Examples</a></li>
+          <li><a href="#comparison">9. Flexbox vs Grid</a></li>
+          <li><a href="#challenges">10. Practice Challenges</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- ============================================================
+         MAIN CONTENT
+         ============================================================ -->
+    <main class="main-content">
+
+      <!-- ===================== HERO ===================== -->
+      <section class="hero" id="hero">
+        <div class="hero-bg-grid" aria-hidden="true"></div>
+        <p class="hero-badge">Master modern CSS layout</p>
+        <h1 class="hero-title">CSS Flexbox &amp; Grid<span>Explorer</span></h1>
+        <p class="hero-subtitle">
+          A complete, visual guide to the two most powerful layout systems in CSS.
+          Every property is explained, illustrated, and rendered live — no frameworks, no JavaScript, just HTML &amp; CSS.
+        </p>
+        <div class="hero-cta">
+          <a href="#flexbox-basics" class="btn btn-primary">Start with Flexbox →</a>
+          <a href="#grid-basics" class="btn btn-ghost">Jump to Grid</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">2</span><span class="stat-label">Layout Systems</span></div>
+          <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Properties</span></div>
+          <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Live Demos</span></div>
+          <div class="stat"><span class="stat-num">0</span><span class="stat-label">JS Dependencies</span></div>
+        </div>
+      </section>
+
+      <!-- ===================== INTRODUCTION ===================== -->
+      <section class="content-section" id="intro">
+        <header class="section-head">
+          <span class="section-tag">Welcome</span>
+          <h2>Introduction</h2>
+          <p class="section-lead">Before diving in, understand what Flexbox and Grid are, why they exist, and when to reach for each.</p>
+        </header>
+
+        <div class="card-grid two-col">
+          <article class="info-card info-flex">
+            <span class="info-emoji">↔️</span>
+            <h3>What is Flexbox?</h3>
+            <p>
+              <strong>Flexbox</strong> (Flexible Box Layout) is a one-dimensional layout model designed for arranging items
+              in a <em>row or a column</em> and distributing space dynamically. It excels at alignment, distributing
+              space, and reordering elements along a single axis.
+            </p>
+          </article>
+          <article class="info-card info-grid">
+            <span class="info-emoji">⊞</span>
+            <h3>What is CSS Grid?</h3>
+            <p>
+              <strong>CSS Grid</strong> is a two-dimensional layout model that lets you control rows <em>and</em> columns
+              simultaneously. It is ideal for page-level structure, complex grids, and overlapping content.
+            </p>
+          </article>
+        </div>
+
+        <div class="card-grid two-col">
+          <article class="info-card">
+            <h3>When should Flexbox be used?</h3>
+            <ul class="check-list">
+              <li>Aligning items within a single row or column</li>
+              <li>Navigation bars and toolbars</li>
+              <li>Centering content vertically &amp; horizontally</li>
+              <li>Components that need equal-height columns</li>
+              <li>Distributing space between elements dynamically</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h3>When should Grid be used?</h3>
+            <ul class="check-list">
+              <li>Full page layouts with rows &amp; columns</li>
+              <li>Magazine, gallery, and dashboard layouts</li>
+              <li>Designs that need precise two-axis control</li>
+              <li>Overlapping or layered content areas</li>
+              <li>Responsive grids without media queries</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3 class="subsection-title">Flexbox vs Grid — Quick Comparison</h3>
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr><th>Feature</th><th>Flexbox</th><th>CSS Grid</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Dimensions</td><td>One-dimensional</td><td>Two-dimensional</td></tr>
+              <tr><td>Designed for</td><td>Component-level</td><td>Page-level</td></tr>
+              <tr><td>Content-first</td><td>Yes — fits content</td><td>No — layout-first</td></tr>
+              <tr><td>Browser support</td><td>Universal</td><td>Universal</td></tr>
+              <tr><td>Best friends</td><td>Alignment &amp; space</td><td>Structure &amp; areas</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-learning">
+          <h4>🎯 Learning Objectives</h4>
+          <ul>
+            <li>Understand every Flexbox &amp; Grid property and its values.</li>
+            <li>See each value rendered live in the browser.</li>
+            <li>Read real-world examples built with pure CSS.</li>
+            <li>Learn when to combine both systems for the best results.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 1 — FLEXBOX BASICS
+           ============================================================ -->
+      <section class="content-section" id="flexbox-basics">
+        <header class="section-head">
+          <span class="section-tag">Section 1</span>
+          <h2>Flexbox Basics</h2>
+          <p class="section-lead">The foundational concepts: turning an element into a flex container, and understanding the two axes that govern every flexbox layout.</p>
+        </header>
+
+        <article class="prop-card">
+          <h3><code>display: flex</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Turns an element into a <em>flex container</em>, making its direct children <em>flex items</em> that flow along a row by default.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>display: flex | inline-flex;</code></div>
+          <div class="prop-values">
+            <span>Accepted values:</span>
+            <ul><li><code>flex</code> — block-level flex container</li><li><code>inline-flex</code> — inline-level flex container</li></ul>
+          </div>
+
+          <div class="demo-grid two-col">
+            <div class="demo">
+              <span class="demo-label">display: flex</span>
+              <div class="demo-stage demo-display-flex">
+                <div class="box box-1">1</div>
+                <div class="box box-2">2</div>
+                <div class="box box-3">3</div>
+              </div>
+            </div>
+            <div class="demo">
+              <span class="demo-label">display: inline-flex</span>
+              <div class="demo-stage demo-display-inline-flex">
+                <div class="box box-1">1</div>
+                <div class="box box-2">2</div>
+                <div class="box box-3">3</div>
+              </div>
+              <span class="demo-note">(inline-level — notice how it doesn't take full width)</span>
+            </div>
+          </div>
+
+          <div class="code-blocks">
+            <div class="code-block">
+              <span class="code-label">HTML</span>
+<pre><code>&lt;div class="container"&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="code-block">
+              <span class="code-label">CSS</span>
+<pre><code>.container {
+  display: flex;
+}</code></pre>
+            </div>
+          </div>
+          <p class="prop-explain"><strong>Explanation:</strong> The moment you set <code>display: flex</code>, the container's main axis becomes horizontal (row) and its children lay out side-by-side instead of stacking.</p>
+          <div class="tips">
+            <strong>💡 Tip:</strong> Use <code>inline-flex</code> when the container should only be as wide as its content, like a badge or button group.
+          </div>
+          <div class="use-cases"><strong>Common use cases:</strong> nav bars, button groups, card rows, toolbars.</div>
+        </article>
+
+        <!-- Main Axis & Cross Axis Diagram -->
+        <article class="prop-card">
+          <h3>Main Axis &amp; Cross Axis</h3>
+          <p class="prop-def"><strong>Definition:</strong> Every flex container has a <em>main axis</em> (the direction items flow) and a <em>cross axis</em> (perpendicular to it). These two axes control how <code>justify-content</code> and <code>align-items</code> behave.</p>
+
+          <div class="axis-diagram">
+            <div class="axis-stage">
+              <div class="axis-main-arrow">
+                <span class="axis-label">MAIN AXIS →</span>
+                <div class="axis-flex-row">
+                  <div class="box box-1">A</div>
+                  <div class="box box-2">B</div>
+                  <div class="box box-3">C</div>
+                </div>
+              </div>
+              <span class="axis-cross-arrow">↓ CROSS AXIS</span>
+            </div>
+          </div>
+          <p class="prop-explain"><strong>Explanation:</strong> <code>justify-content</code> aligns along the main axis; <code>align-items</code> aligns along the cross axis. Switch the axis by changing <code>flex-direction</code> and the two properties swap roles.</p>
+          <div class="tips"><strong>💡 Tip:</strong> If your alignment isn't doing what you expect, ask yourself: "which axis is the main axis?"</div>
+        </article>
+
+        <article class="prop-card">
+          <h3>Flex Container vs Flex Items</h3>
+          <div class="card-grid two-col">
+            <div class="concept-box">
+              <h4>Flex Container</h4>
+              <ul>
+                <li>The parent element with <code>display: flex</code></li>
+                <li>Controls flow, alignment, wrapping &amp; gaps</li>
+                <li>Properties: flex-direction, justify-content, align-items…</li>
+              </ul>
+            </div>
+            <div class="concept-box">
+              <h4>Flex Items</h4>
+              <ul>
+                <li>The direct children of the container</li>
+                <li>Controls their size, order &amp; self-alignment</li>
+                <li>Properties: order, flex-grow, flex-shrink, align-self…</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================
+           SECTION 2 — FLEX CONTAINER PROPERTIES
+           ============================================================ -->
+      <section class="content-section" id="flex-container">
+        <header class="section-head">
+          <span class="section-tag">Section 2</span>
+          <h2>Flex Container Properties</h2>
+          <p class="section-lead">Every property applied to the flex container, with side-by-side visual comparisons of all values.</p>
+        </header>
+
+        <!-- flex-direction -->
+        <article class="prop-card" id="prop-flex-direction">
+          <h3><code>flex-direction</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Sets the direction of the main axis, deciding whether items flow in a row or column, and in which order.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>flex-direction: row | row-reverse | column | column-reverse;</code></div>
+
+          <div class="demo-grid four-col">
+            <div class="demo">
+              <span class="demo-label">row (default)</span>
+              <div class="demo-stage demo-flex-row"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div>
+            </div>
+            <div class="demo">
+              <span class="demo-label">row-reverse</span>
+              <div class="demo-stage demo-flex-row-reverse"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div>
+            </div>
+            <div class="demo">
+              <span class="demo-label">column</span>
+              <div class="demo-stage demo-flex-column"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div>
+            </div>
+            <div class="demo">
+              <span class="demo-label">column-reverse</span>
+              <div class="demo-stage demo-flex-column-reverse"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div>
+            </div>
+          </div>
+          <div class="code-blocks">
+            <div class="code-block"><span class="code-label">CSS</span><pre><code>.container { flex-direction: row-reverse; }</code></pre></div>
+            <div class="code-block"><span class="code-label">HTML</span><pre><code>&lt;div class="container"&gt;
+  &lt;div&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+          </div>
+          <p class="prop-explain"><strong>Explanation:</strong> <code>row</code> lays items left-to-right (LTR); <code>row-reverse</code> reverses them. <code>column</code> stacks them top-to-bottom; <code>column-reverse</code> bottom-to-top.</p>
+          <div class="tips"><strong>💡 Tip:</strong> In RTL languages the visual direction of <code>row</code> flips automatically.</div>
+          <div class="use-cases"><strong>Use cases:</strong> sidebars (column), nav (row), chat bubbles (column-reverse).</div>
+        </article>
+
+        <!-- flex-wrap -->
+        <article class="prop-card" id="prop-flex-wrap">
+          <h3><code>flex-wrap</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Controls whether flex items stay on a single line or wrap onto multiple lines when there isn't enough room.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>flex-wrap: nowrap | wrap | wrap-reverse;</code></div>
+
+          <div class="demo-grid three-col">
+            <div class="demo">
+              <span class="demo-label">nowrap (default)</span>
+              <div class="demo-stage demo-wrap-nowrap"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div></div>
+            </div>
+            <div class="demo">
+              <span class="demo-label">wrap</span>
+              <div class="demo-stage demo-wrap-wrap"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div></div>
+            </div>
+            <div class="demo">
+              <span class="demo-label">wrap-reverse</span>
+              <div class="demo-stage demo-wrap-reverse"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div></div>
+            </div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.container { flex-wrap: wrap; }</code></pre></div></div>
+          <p class="prop-explain"><strong>Explanation:</strong> <code>nowrap</code> squeezes items to fit; <code>wrap</code> lets them flow to the next line; <code>wrap-reverse</code> wraps upward.</p>
+          <div class="tips"><strong>💡 Tip:</strong> Almost always use <code>wrap</code> for responsive components — <code>nowrap</code> causes overflow on small screens.</div>
+        </article>
+
+        <!-- flex-flow -->
+        <article class="prop-card" id="prop-flex-flow">
+          <h3><code>flex-flow</code> (shorthand)</h3>
+          <p class="prop-def"><strong>Definition:</strong> A shorthand combining <code>flex-direction</code> and <code>flex-wrap</code> in one declaration.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>flex-flow: &lt;flex-direction&gt; &lt;flex-wrap&gt;;</code></div>
+          <div class="demo-grid two-col">
+            <div class="demo">
+              <span class="demo-label">flex-flow: row wrap</span>
+              <div class="demo-stage demo-flow-row-wrap"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div>
+            </div>
+            <div class="demo">
+              <span class="demo-label">flex-flow: column wrap</span>
+              <div class="demo-stage demo-flow-column-wrap"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div>
+            </div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.container { flex-flow: row wrap; }
+/* same as: flex-direction: row; flex-wrap: wrap; */</code></pre></div></div>
+        </article>
+
+        <!-- justify-content -->
+        <article class="prop-card" id="prop-justify-content">
+          <h3><code>justify-content</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Aligns flex items along the <strong>main axis</strong> and distributes leftover free space.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly;</code></div>
+
+          <div class="demo-grid three-col">
+            <div class="demo"><span class="demo-label">flex-start</span><div class="demo-stage jc-flex-start"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div></div>
+            <div class="demo"><span class="demo-label">flex-end</span><div class="demo-stage jc-flex-end"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div></div>
+            <div class="demo"><span class="demo-label">center</span><div class="demo-stage jc-center"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div></div>
+            <div class="demo"><span class="demo-label">space-between</span><div class="demo-stage jc-space-between"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div></div>
+            <div class="demo"><span class="demo-label">space-around</span><div class="demo-stage jc-space-around"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div></div>
+            <div class="demo"><span class="demo-label">space-evenly</span><div class="demo-stage jc-space-evenly"><div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.container { justify-content: space-between; }</code></pre></div></div>
+          <p class="prop-explain"><strong>Explanation:</strong> <code>space-between</code> puts all space between items (none at the edges); <code>space-around</code> gives each item equal space on both sides; <code>space-evenly</code> makes gaps between items <em>and</em> at the edges identical.</p>
+          <div class="tips"><strong>💡 Tip:</strong> To perfectly center a single element, use <code>justify-content: center</code> + <code>align-items: center</code>.</div>
+        </article>
+
+        <!-- align-items -->
+        <article class="prop-card" id="prop-align-items">
+          <h3><code>align-items</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Aligns flex items along the <strong>cross axis</strong> within their line.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>align-items: stretch | flex-start | flex-end | center | baseline;</code></div>
+
+          <div class="demo-grid five-col">
+            <div class="demo"><span class="demo-label">stretch</span><div class="demo-stage ai-stretch"><div class="box sm">1</div><div class="box md">2</div><div class="box lg">3</div></div></div>
+            <div class="demo"><span class="demo-label">flex-start</span><div class="demo-stage ai-flex-start"><div class="box sm">1</div><div class="box md">2</div><div class="box lg">3</div></div></div>
+            <div class="demo"><span class="demo-label">flex-end</span><div class="demo-stage ai-flex-end"><div class="box sm">1</div><div class="box md">2</div><div class="box lg">3</div></div></div>
+            <div class="demo"><span class="demo-label">center</span><div class="demo-stage ai-center"><div class="box sm">1</div><div class="box md">2</div><div class="box lg">3</div></div></div>
+            <div class="demo"><span class="demo-label">baseline</span><div class="demo-stage ai-baseline"><div class="box sm">1</div><div class="box md">2</div><div class="box lg">3</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.container { align-items: center; }</code></pre></div></div>
+          <p class="prop-explain"><strong>Explanation:</strong> <code>stretch</code> fills the cross axis (default); <code>baseline</code> aligns items by their text baseline — perfect for aligning labels of different sizes.</p>
+          <div class="tips"><strong>💡 Tip:</strong> <code>baseline</code> is the secret to aligning form labels and inputs that have different font sizes.</div>
+        </article>
+
+        <!-- align-content -->
+        <article class="prop-card" id="prop-align-content">
+          <h3><code>align-content</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Controls spacing between <em>multiple lines</em> of flex items along the cross axis. Only takes effect when <code>flex-wrap: wrap</code> and there is extra space.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>align-content: stretch | center | flex-start | flex-end | space-between | space-around | space-evenly;</code></div>
+
+          <div class="demo-grid three-col">
+            <div class="demo"><span class="demo-label">stretch</span><div class="demo-stage demo-tall ac-stretch"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div></div>
+            <div class="demo"><span class="demo-label">center</span><div class="demo-stage demo-tall ac-center"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div></div>
+            <div class="demo"><span class="demo-label">flex-start</span><div class="demo-stage demo-tall ac-flex-start"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div></div>
+            <div class="demo"><span class="demo-label">flex-end</span><div class="demo-stage demo-tall ac-flex-end"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div></div>
+            <div class="demo"><span class="demo-label">space-between</span><div class="demo-stage demo-tall ac-space-between"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div></div>
+            <div class="demo"><span class="demo-label">space-evenly</span><div class="demo-stage demo-tall ac-space-evenly"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.container {
+  flex-wrap: wrap;
+  align-content: space-between;
+}</code></pre></div></div>
+          <p class="prop-explain"><strong>Explanation:</strong> Think of it as <code>justify-content</code> for whole lines instead of individual items.</p>
+          <div class="tips"><strong>💡 Tip:</strong> If items fit on a single line, <code>align-content</code> has no visible effect.</div>
+        </article>
+
+        <!-- gap / row-gap / column-gap -->
+        <article class="prop-card" id="prop-gap">
+          <h3><code>gap</code>, <code>row-gap</code>, <code>column-gap</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Sets the spacing between flex items without needing margins. <code>gap</code> is a shorthand for <code>row-gap</code> and <code>column-gap</code>.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>gap: &lt;row-gap&gt; &lt;column-gap&gt;;</code></div>
+
+          <div class="demo-grid three-col">
+            <div class="demo"><span class="demo-label">gap: 0</span><div class="demo-stage demo-wrap-wrap gap-none"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+            <div class="demo"><span class="demo-label">gap: 12px</span><div class="demo-stage demo-wrap-wrap gap-sm"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+            <div class="demo"><span class="demo-label">row 8 / col 24</span><div class="demo-stage demo-wrap-wrap gap-mixed"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.container { gap: 12px; }
+/* or individually */
+.container {
+  row-gap: 8px;
+  column-gap: 24px;
+}</code></pre></div></div>
+          <div class="tips"><strong>💡 Tip:</strong> <code>gap</code> only applies between items — never at the outer edges. This solves the classic "double margin" problem.</div>
+        </article>
+      </section>
+
+      <!-- ============================================================
+           SECTION 3 — FLEX ITEM PROPERTIES
+           ============================================================ -->
+      <section class="content-section" id="flex-items">
+        <header class="section-head">
+          <span class="section-tag">Section 3</span>
+          <h2>Flex Item Properties</h2>
+          <p class="section-lead">Properties applied to the children inside a flex container — controlling order, sizing, and individual alignment.</p>
+        </header>
+
+        <!-- order -->
+        <article class="prop-card" id="prop-order">
+          <h3><code>order</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Changes the visual order of a flex item without changing the HTML source order.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>order: &lt;integer&gt;; /* default 0 */</code></div>
+          <div class="demo-grid one-col">
+            <div class="demo"><span class="demo-label">Item 2 has order: -1 (moves first)</span><div class="demo-stage demo-wrap-nowrap"><div class="box box-1">1</div><div class="box box-2 order-first">2 (order:-1)</div><div class="box box-3">3</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.item-2 { order: -1; }</code></pre></div></div>
+          <p class="prop-explain"><strong>Explanation:</strong> Lower numbers appear first. Items with the same order keep their source order.</p>
+          <div class="tips"><strong>⚠️ Tip:</strong> <code>order</code> changes visual order only — it does NOT change tab/reading order, so be careful for accessibility.</div>
+        </article>
+
+        <!-- flex-grow -->
+        <article class="prop-card" id="prop-flex-grow">
+          <h3><code>flex-grow</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Defines how much a flex item should grow relative to its siblings to fill available space.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>flex-grow: &lt;number&gt;; /* default 0 */</code></div>
+          <div class="demo-grid one-col">
+            <div class="demo"><span class="demo-label">grow 1 / 2 / 3 — proportional growth</span><div class="demo-stage demo-wrap-nowrap"><div class="box box-1 grow-1">grow:1</div><div class="box box-2 grow-2">grow:2</div><div class="box box-3 grow-3">grow:3</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.item-a { flex-grow: 1; }
+.item-b { flex-grow: 2; }
+.item-c { flex-grow: 3; }</code></pre></div></div>
+          <p class="prop-explain"><strong>Explanation:</strong> A <code>flex-grow</code> of 2 doesn't mean "twice the size" — it means "absorb twice as much of the extra space".</p>
+        </article>
+
+        <!-- flex-shrink -->
+        <article class="prop-card" id="prop-flex-shrink">
+          <h3><code>flex-shrink</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Controls how much a flex item shrinks when there isn't enough space. Opposite of <code>flex-grow</code>.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>flex-shrink: &lt;number&gt;; /* default 1 */</code></div>
+          <div class="demo-grid one-col">
+            <div class="demo"><span class="demo-label">Middle item has flex-shrink: 0 (stays fixed)</span><div class="demo-stage demo-wrap-nowrap"><div class="box box-1 shrink-1">shrink:1</div><div class="box box-2 shrink-0">shrink:0</div><div class="box box-3 shrink-1">shrink:1</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.fixed-item { flex-shrink: 0; }</code></pre></div></div>
+          <div class="tips"><strong>💡 Tip:</strong> Set <code>flex-shrink: 0</code> on icons or avatars so they never get squished.</div>
+        </article>
+
+        <!-- flex-basis -->
+        <article class="prop-card" id="prop-flex-basis">
+          <h3><code>flex-basis</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Sets the initial main-size of a flex item <em>before</em> free space is distributed.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>flex-basis: auto | &lt;length&gt; | &lt;percentage&gt;;</code></div>
+          <div class="demo-grid one-col">
+            <div class="demo"><span class="demo-label">basis: 80 / 150 / auto</span><div class="demo-stage demo-wrap-nowrap"><div class="box box-1 basis-80">80px</div><div class="box box-2 basis-150">150px</div><div class="box box-3 basis-auto">auto</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.a { flex-basis: 80px; }
+.b { flex-basis: 150px; }
+.c { flex-basis: auto; }</code></pre></div></div>
+          <p class="prop-explain"><strong>Explanation:</strong> <code>auto</code> uses the item's content/width; a fixed value overrides that before growing/shrinking.</p>
+        </article>
+
+        <!-- flex shorthand -->
+        <article class="prop-card" id="prop-flex">
+          <h3><code>flex</code> (shorthand)</h3>
+          <p class="prop-def"><strong>Definition:</strong> Combines <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> into one declaration.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>flex: &lt;grow&gt; &lt;shrink&gt; &lt;basis&gt;;</code></div>
+          <div class="demo-grid two-col">
+            <div class="demo"><span class="demo-label">flex: 1 (grow, fill space)</span><div class="demo-stage demo-wrap-nowrap"><div class="box box-1 flex-1">1</div><div class="box box-2 flex-1">2</div><div class="box box-3 flex-1">3</div></div></div>
+            <div class="demo"><span class="demo-label">flex: 0 1 200px</span><div class="demo-stage demo-wrap-nowrap"><div class="box box-1 flex-fixed">200px</div><div class="box box-2 flex-1">grow</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>/* Common shortcuts */
+.fill    { flex: 1; }       /* 1 1 0%   */
+.initial { flex: initial; } /* 0 1 auto  */
+.none    { flex: none; }    /* 0 0 auto  */
+.auto    { flex: auto; }    /* 1 1 auto  */</code></pre></div></div>
+          <div class="tips"><strong>💡 Tip:</strong> Prefer <code>flex: 1</code> over <code>flex-grow: 1</code> — it resets shrink &amp; basis sensibly.</div>
+        </article>
+
+        <!-- align-self -->
+        <article class="prop-card" id="prop-align-self">
+          <h3><code>align-self</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Overrides the container's <code>align-items</code> for a single item, on the cross axis.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>align-self: auto | flex-start | flex-end | center | stretch | baseline;</code></div>
+          <div class="demo-grid one-col">
+            <div class="demo"><span class="demo-label">Each item overrides align-items (default stretch)</span><div class="demo-stage ai-stretch"><div class="box box-1 self-start">start</div><div class="box box-2 self-center">center</div><div class="box box-3 self-end">end</div><div class="box box-1 self-stretch">stretch</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.a { align-self: flex-start; }
+.b { align-self: center; }
+.c { align-self: flex-end; }</code></pre></div></div>
+        </article>
+      </section>
+
+      <!-- ============================================================
+           SECTION 4 — FLEXBOX LAYOUT EXAMPLES
+           ============================================================ -->
+      <section class="content-section" id="flex-examples">
+        <header class="section-head">
+          <span class="section-tag">Section 4</span>
+          <h2>Flexbox Layout Examples</h2>
+          <p class="section-lead">Real-world UI patterns built entirely with Flexbox.</p>
+        </header>
+
+        <!-- Navigation Bar -->
+        <article class="example-card">
+          <h3>Navigation Bar</h3>
+          <p>Logo on the left, links centered, action button on the right — the classic flex pattern with <code>justify-content: space-between</code>.</p>
+          <div class="rendered">
+            <nav class="ex-navbar">
+              <div class="ex-brand">⬚ BrandLogo</div>
+              <ul class="ex-nav-links"><li>Home</li><li>About</li><li>Services</li><li>Contact</li></ul>
+              <button class="ex-btn">Sign In</button>
+            </nav>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}</code></pre></div></div>
+        </article>
+
+        <!-- Pricing Cards -->
+        <article class="example-card">
+          <h3>Pricing Cards</h3>
+          <p>Equal-height cards with vertically distributed content using <code>flex-direction: column</code> and <code>flex: 1</code>.</p>
+          <div class="rendered">
+            <div class="ex-pricing">
+              <div class="ex-price-card"><h4>Starter</h4><div class="ex-price">$9</div><ul><li>1 project</li><li>5GB storage</li></ul><button class="ex-btn ghost">Choose</button></div>
+              <div class="ex-price-card featured"><span class="ex-badge">Popular</span><h4>Pro</h4><div class="ex-price">$29</div><ul><li>Unlimited projects</li><li>100GB storage</li></ul><button class="ex-btn">Choose</button></div>
+              <div class="ex-price-card"><h4>Team</h4><div class="ex-price">$79</div><ul><li>Everything in Pro</li><li>Team access</li></ul><button class="ex-btn ghost">Choose</button></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Media Object -->
+        <article class="example-card">
+          <h3>Media Object</h3>
+          <p>Image + text where the text can wrap but the image stays fixed — the pattern that made Bootstrap famous.</p>
+          <div class="rendered">
+            <article class="ex-media">
+              <div class="ex-media-img">IMG</div>
+              <div class="ex-media-body"><h5>Article title</h5><p>This is the body of the media object. The image on the left has a fixed width while this text flexes to fill the remaining space — a perfect flex use-case.</p></div>
+            </article>
+          </div>
+        </article>
+
+        <!-- Login Form -->
+        <article class="example-card">
+          <h3>Login Form</h3>
+          <p>Centered card using nested flex: outer centers vertically &amp; horizontally, inner stacks fields as a column.</p>
+          <div class="rendered">
+            <div class="ex-login-wrap">
+              <form class="ex-login">
+                <h4>Welcome back</h4>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button class="ex-btn">Log In</button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <!-- Footer -->
+        <article class="example-card">
+          <h3>Footer Layout</h3>
+          <p>Multi-column footer with <code>flex-wrap</code> so columns reflow on small screens.</p>
+          <div class="rendered">
+            <footer class="ex-footer">
+              <div class="ex-footer-col"><h5>Product</h5><a href="#">Features</a><a href="#">Pricing</a><a href="#">Changelog</a></div>
+              <div class="ex-footer-col"><h5>Company</h5><a href="#">About</a><a href="#">Blog</a><a href="#">Careers</a></div>
+              <div class="ex-footer-col"><h5>Resources</h5><a href="#">Docs</a><a href="#">Support</a><a href="#">Status</a></div>
+              <div class="ex-footer-col"><h5>Legal</h5><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+            </footer>
+          </div>
+        </article>
+
+        <!-- Centering -->
+        <article class="example-card">
+          <h3>Perfect Centering</h3>
+          <p>The holy grail: one element, perfectly centered both ways with two lines of CSS.</p>
+          <div class="rendered">
+            <div class="ex-center"><div class="ex-center-box">Centered ✦</div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre></div></div>
+        </article>
+
+        <!-- Sidebar Layout -->
+        <article class="example-card">
+          <h3>Sidebar + Content Layout</h3>
+          <p>Fixed sidebar with a flexible main content area using <code>flex: 1</code>.</p>
+          <div class="rendered">
+            <div class="ex-sidebar-layout">
+              <aside class="ex-sb">Sidebar</aside>
+              <main class="ex-sb-main">Main content area that grows to fill remaining space.</main>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dashboard Header -->
+        <article class="example-card">
+          <h3>Dashboard Header</h3>
+          <p>Search bar that grows, flanked by fixed action icons.</p>
+          <div class="rendered">
+            <div class="ex-dash-head">
+              <button class="ex-icon-btn">☰</button>
+              <input type="search" placeholder="Search…" />
+              <button class="ex-icon-btn">🔔</button>
+              <div class="ex-avatar">JD</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Gallery -->
+        <article class="example-card">
+          <h3>Wrap Gallery</h3>
+          <p>Gallery of tiles that wrap responsively with consistent gaps.</p>
+          <div class="rendered">
+            <div class="ex-gallery">
+              <div class="ex-tile">1</div><div class="ex-tile">2</div><div class="ex-tile">3</div>
+              <div class="ex-tile">4</div><div class="ex-tile">5</div><div class="ex-tile">6</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Responsive Cards -->
+        <article class="example-card">
+          <h3>Responsive Cards Row</h3>
+          <p>Cards laid out in a row that wrap gracefully on narrower viewports.</p>
+          <div class="rendered">
+            <div class="ex-cards-row">
+              <div class="ex-mini-card">Card A</div>
+              <div class="ex-mini-card">Card B</div>
+              <div class="ex-mini-card">Card C</div>
+              <div class="ex-mini-card">Card D</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================
+           SECTION 5 — CSS GRID BASICS
+           ============================================================ -->
+      <section class="content-section" id="grid-basics">
+        <header class="section-head">
+          <span class="section-tag">Section 5</span>
+          <h2>CSS Grid Basics</h2>
+          <p class="section-lead">The mental model behind CSS Grid: containers, items, and the anatomy of a grid.</p>
+        </header>
+
+        <article class="prop-card">
+          <h3><code>display: grid</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Turns an element into a <em>grid container</em>, enabling two-dimensional layout control over its children.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>display: grid | inline-grid;</code></div>
+          <div class="demo-grid two-col">
+            <div class="demo">
+              <span class="demo-label">display: grid (3 columns)</span>
+              <div class="demo-stage demo-grid-3col">
+                <div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div>
+                <div class="box box-1">4</div><div class="box box-2">5</div><div class="box box-3">6</div>
+              </div>
+            </div>
+            <div class="demo">
+              <span class="demo-label">display: inline-grid</span>
+              <div class="demo-stage demo-grid-inline">
+                <div class="box box-1">1</div><div class="box box-2">2</div><div class="box box-3">3</div><div class="box box-1">4</div>
+              </div>
+            </div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}</code></pre></div></div>
+        </article>
+
+        <!-- Grid Anatomy Diagram -->
+        <article class="prop-card">
+          <h3>Grid Anatomy</h3>
+          <p class="prop-def"><strong>Definition:</strong> A grid is made of <em>lines</em>, <em>tracks</em>, <em>cells</em>, and <em>areas</em>. Understanding these names is essential for using Grid properties.</p>
+          <div class="grid-diagram">
+            <div class="gd-track-h">Column Track</div>
+            <div class="gd-track-v">Row Track</div>
+            <div class="gd-grid">
+              <div class="gd-cell">Cell</div>
+              <div class="gd-cell"></div>
+              <div class="gd-cell"></div>
+              <div class="gd-cell area" style="grid-column: span 2;">Area (spans cells)</div>
+              <div class="gd-cell"></div>
+            </div>
+            <span class="gd-line-label gd-line-v1">Line 1</span>
+            <span class="gd-line-label gd-line-h1">Line 1</span>
+          </div>
+          <div class="card-grid two-col">
+            <div class="concept-box">
+              <h4>Grid Container</h4>
+              <p>The element with <code>display: grid</code>. Defines tracks, gaps, and alignment.</p>
+            </div>
+            <div class="concept-box">
+              <h4>Grid Items</h4>
+              <p>Direct children. Each is placed into a cell or can span multiple cells.</p>
+            </div>
+            <div class="concept-box">
+              <h4>Lines &amp; Tracks</h4>
+              <p><em>Lines</em> are the dividing lines (numbered from 1). <em>Tracks</em> are the rows/columns between two lines.</p>
+            </div>
+            <div class="concept-box">
+              <h4>Cells &amp; Areas</h4>
+              <p>A <em>cell</em> is a single row/column intersection. An <em>area</em> is one or more cells grouped together.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================
+           SECTION 6 — GRID CONTAINER PROPERTIES
+           ============================================================ -->
+      <section class="content-section" id="grid-container">
+        <header class="section-head">
+          <span class="section-tag">Section 6</span>
+          <h2>Grid Container Properties</h2>
+          <p class="section-lead">Define the grid's structure: tracks, areas, flow, alignment, and gaps.</p>
+        </header>
+
+        <!-- grid-template-columns -->
+        <article class="prop-card" id="prop-gt-columns">
+          <h3><code>grid-template-columns</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Defines the number and size of columns in the grid.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>grid-template-columns: &lt;track-size&gt;…;</code></div>
+          <div class="demo-grid three-col">
+            <div class="demo"><span class="demo-label">100px 100px 100px</span><div class="demo-stage gtc-fixed"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+            <div class="demo"><span class="demo-label">1fr 1fr 1fr</span><div class="demo-stage gtc-fr"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+            <div class="demo"><span class="demo-label">1fr 2fr 1fr</span><div class="demo-stage gtc-fr2"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+            <div class="demo"><span class="demo-label">200px 1fr 1fr</span><div class="demo-stage gtc-mixed"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+            <div class="demo"><span class="demo-label">auto auto auto</span><div class="demo-stage gtc-auto"><div class="box">A</div><div class="box">B big</div><div class="box">C</div><div class="box">D</div></div></div>
+            <div class="demo"><span class="demo-label">2fr 1fr</span><div class="demo-stage gtc-2to1"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}</code></pre></div></div>
+          <div class="tips"><strong>💡 Tip:</strong> <code>fr</code> units distribute <em>free</em> space proportionally — they are not percentages.</div>
+        </article>
+
+        <!-- grid-template-rows -->
+        <article class="prop-card" id="prop-gt-rows">
+          <h3><code>grid-template-rows</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Defines the number and size of rows.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>grid-template-rows: &lt;track-size&gt;…;</code></div>
+          <div class="demo-grid two-col">
+            <div class="demo"><span class="demo-label">80px 120px 80px</span><div class="demo-stage gtr-fixed"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div></div>
+            <div class="demo"><span class="demo-label">1fr 2fr 1fr</span><div class="demo-stage gtr-fr"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div><div class="box">6</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 80px 120px 80px;
+}</code></pre></div></div>
+        </article>
+
+        <!-- repeat() -->
+        <article class="prop-card" id="prop-repeat">
+          <h3><code>repeat()</code> function</h3>
+          <p class="prop-def"><strong>Definition:</strong> A shorthand for repeating track sizes — cleaner than typing the same value many times.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>repeat(&lt;count&gt; | auto-fill | auto-fit, &lt;track-size&gt;);</code></div>
+          <div class="demo-grid two-col">
+            <div class="demo"><span class="demo-label">repeat(4, 1fr)</span><div class="demo-stage rep-fixed"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div></div></div>
+            <div class="demo"><span class="demo-label">repeat(auto-fit, minmax(60px, 1fr))</span><div class="demo-stage rep-auto"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>/* responsive grid, no media queries! */
+.grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(60px, 1fr));
+}</code></pre></div></div>
+          <div class="tips"><strong>💡 Tip:</strong> <code>auto-fit</code> collapses empty tracks; <code>auto-fill</code> keeps them reserved.</div>
+        </article>
+
+        <!-- minmax() -->
+        <article class="prop-card" id="prop-minmax">
+          <h3><code>minmax()</code> function</h3>
+          <p class="prop-def"><strong>Definition:</strong> Defines a track size range with a minimum and maximum, so columns can grow but never shrink too small.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>minmax(&lt;min&gt;, &lt;max&gt;);</code></div>
+          <div class="demo-grid two-col">
+            <div class="demo"><span class="demo-label">minmax(80px, 1fr) ×4</span><div class="demo-stage mm-demo"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+            <div class="demo"><span class="demo-label">minmax(120px, auto)</span><div class="demo-stage mm-auto"><div class="box">A</div><div class="box">B</div><div class="box">C</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.grid {
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(80px, 1fr));
+}</code></pre></div></div>
+        </article>
+
+        <!-- grid-template-areas -->
+        <article class="prop-card" id="prop-areas">
+          <h3><code>grid-template-areas</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Names grid areas using a visual ASCII-style map, then assigns items by name. The most readable Grid feature.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>grid-template-areas: "a a b" "c d b";</code></div>
+          <div class="demo-grid one-col">
+            <div class="demo"><span class="demo-label">Named layout: header / sidebar / content / footer</span>
+              <div class="demo-stage areas-demo">
+                <div class="ar ar-header">header</div>
+                <div class="ar ar-side">sidebar</div>
+                <div class="ar ar-main">main content</div>
+                <div class="ar ar-footer">footer</div>
+              </div>
+            </div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.footer  { grid-area: footer; }</code></pre></div></div>
+          <div class="tips"><strong>💡 Tip:</strong> Use a <code>.</code> to leave a cell empty in the map.</div>
+        </article>
+
+        <!-- grid-auto-flow -->
+        <article class="prop-card" id="prop-auto-flow">
+          <h3><code>grid-auto-flow</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Controls how auto-placed items flow into the grid — by row, column, or with gaps filled.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>grid-auto-flow: row | column | dense | row dense | column dense;</code></div>
+          <div class="demo-grid three-col">
+            <div class="demo"><span class="demo-label">row (default)</span><div class="demo-stage gaf-row"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div></div></div>
+            <div class="demo"><span class="demo-label">column</span><div class="demo-stage gaf-column"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div></div></div>
+            <div class="demo"><span class="demo-label">dense (fills gaps)</span><div class="demo-stage gaf-dense"><div class="box big-span">1 (span 2)</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
+}</code></pre></div></div>
+          <div class="tips"><strong>⚠️ Tip:</strong> <code>dense</code> can cause visual reordering that breaks source order — test for accessibility.</div>
+        </article>
+
+        <!-- justify-items -->
+        <article class="prop-card" id="prop-justify-items">
+          <h3><code>justify-items</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Aligns grid items <em>inline</em> (horizontally) within their cells.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>justify-items: start | end | center | stretch;</code></div>
+          <div class="demo-grid four-col">
+            <div class="demo"><span class="demo-label">start</span><div class="demo-stage ji-start"><div class="box">1</div><div class="box">2</div></div></div>
+            <div class="demo"><span class="demo-label">end</span><div class="demo-stage ji-end"><div class="box">1</div><div class="box">2</div></div></div>
+            <div class="demo"><span class="demo-label">center</span><div class="demo-stage ji-center"><div class="box">1</div><div class="box">2</div></div></div>
+            <div class="demo"><span class="demo-label">stretch (default)</span><div class="demo-stage ji-stretch"><div class="box">1</div><div class="box">2</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}</code></pre></div></div>
+        </article>
+
+        <!-- align-items (grid) -->
+        <article class="prop-card" id="prop-align-items-grid">
+          <h3><code>align-items</code> (grid)</h3>
+          <p class="prop-def"><strong>Definition:</strong> Aligns grid items <em>block</em> (vertically) within their cells.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>align-items: start | end | center | stretch;</code></div>
+          <div class="demo-grid four-col">
+            <div class="demo"><span class="demo-label">start</span><div class="demo-stage demo-tall ai-grid-start"><div class="box">1</div><div class="box">2</div></div></div>
+            <div class="demo"><span class="demo-label">end</span><div class="demo-stage demo-tall ai-grid-end"><div class="box">1</div><div class="box">2</div></div></div>
+            <div class="demo"><span class="demo-label">center</span><div class="demo-stage demo-tall ai-grid-center"><div class="box">1</div><div class="box">2</div></div></div>
+            <div class="demo"><span class="demo-label">stretch</span><div class="demo-stage demo-tall ai-grid-stretch"><div class="box">1</div><div class="box">2</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+/* Shorthand: place-items: center center; */</code></pre></div></div>
+        </article>
+
+        <!-- justify-content (grid) -->
+        <article class="prop-card" id="prop-justify-content-grid">
+          <h3><code>justify-content</code> (grid)</h3>
+          <p class="prop-def"><strong>Definition:</strong> Aligns the entire grid within the container when the grid is smaller than its container.</p>
+          <div class="demo-grid three-col">
+            <div class="demo"><span class="demo-label">start</span><div class="demo-stage jc-grid-start"><div class="box">1</div><div class="box">2</div><div class="box">3</div></div></div>
+            <div class="demo"><span class="demo-label">center</span><div class="demo-stage jc-grid-center"><div class="box">1</div><div class="box">2</div><div class="box">3</div></div></div>
+            <div class="demo"><span class="demo-label">space-between</span><div class="demo-stage jc-grid-between"><div class="box">1</div><div class="box">2</div><div class="box">3</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  justify-content: space-between;
+}</code></pre></div></div>
+          <div class="tips"><strong>💡 Tip:</strong> This only has visible effect when tracks use fixed sizes (not <code>fr</code>).</div>
+        </article>
+
+        <!-- gap (grid) -->
+        <article class="prop-card" id="prop-gap-grid">
+          <h3><code>gap</code> (grid)</h3>
+          <p class="prop-def"><strong>Definition:</strong> Same property as Flexbox — sets gutters between rows and columns in a grid.</p>
+          <div class="demo-grid three-col">
+            <div class="demo"><span class="demo-label">gap: 0</span><div class="demo-stage ggap-none"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+            <div class="demo"><span class="demo-label">gap: 16px</span><div class="demo-stage ggap-md"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+            <div class="demo"><span class="demo-label">8px / 32px</span><div class="demo-stage ggap-mix"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div></div></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================
+           SECTION 7 — GRID ITEM PROPERTIES
+           ============================================================ -->
+      <section class="content-section" id="grid-items">
+        <header class="section-head">
+          <span class="section-tag">Section 7</span>
+          <h2>Grid Item Properties</h2>
+          <p class="section-lead">Position and size individual grid items within the grid.</p>
+        </header>
+
+        <!-- grid-column -->
+        <article class="prop-card">
+          <h3><code>grid-column</code> &amp; <code>grid-row</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Positions an item by referencing grid lines, and lets it span multiple tracks.</p>
+          <div class="prop-syntax"><span>Syntax</span><code>grid-column: &lt;start-line&gt; / &lt;end-line&gt;;</code></div>
+          <div class="demo-grid two-col">
+            <div class="demo"><span class="demo-label">item spans 2 columns</span>
+              <div class="demo-stage gi-span">
+                <div class="box box-1 span-col-2">spans col 1→3</div>
+                <div class="box box-2">2</div>
+                <div class="box box-3">3</div>
+                <div class="box box-1">4</div>
+              </div>
+            </div>
+            <div class="demo"><span class="demo-label">item spans 2 rows</span>
+              <div class="demo-stage gi-span-row">
+                <div class="box box-1">1</div>
+                <div class="box box-2 span-row-2">spans row 1→3</div>
+                <div class="box box-3">3</div>
+                <div class="box box-1">4</div>
+                <div class="box box-2">5</div>
+              </div>
+            </div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.feature {
+  grid-column: 1 / 3;   /* line 1 to 3 */
+  grid-row: 1 / 3;      /* or span 2 */
+}
+/* span syntax */
+.feature { grid-column: span 2; }</code></pre></div></div>
+          <div class="tips"><strong>💡 Tip:</strong> <code>span N</code> is easier than counting lines — use it whenever possible.</div>
+        </article>
+
+        <!-- grid-area -->
+        <article class="prop-card">
+          <h3><code>grid-area</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Assigns an item to a named area, or shorthand for row-start/column-start/row-end/column-end.</p>
+          <div class="demo-grid one-col">
+            <div class="demo"><span class="demo-label">Named area placement</span>
+              <div class="demo-stage ga-demo">
+                <div class="box box-1 ga-feature">feature</div>
+                <div class="box box-2 ga-a">A</div>
+                <div class="box box-3 ga-b">B</div>
+              </div>
+            </div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>/* By name */
+.feature { grid-area: hero; }
+
+/* By lines: row-start / col-start / row-end / col-end */
+.feature {
+  grid-area: 1 / 1 / 3 / 4;
+}</code></pre></div></div>
+        </article>
+
+        <!-- justify-self / align-self / place-self -->
+        <article class="prop-card">
+          <h3><code>justify-self</code>, <code>align-self</code>, <code>place-self</code></h3>
+          <p class="prop-def"><strong>Definition:</strong> Override the container's <code>justify-items</code> / <code>align-items</code> for a single grid item.</p>
+          <div class="demo-grid three-col">
+            <div class="demo"><span class="demo-label">justify-self: start</span><div class="demo-stage ji-start self-demo"><div class="box box-1 js-start">1</div><div class="box box-2">2</div></div></div>
+            <div class="demo"><span class="demo-label">align-self: end</span><div class="demo-stage demo-tall ai-grid-stretch self-demo"><div class="box box-1 as-end">1</div><div class="box box-2">2</div></div></div>
+            <div class="demo"><span class="demo-label">place-self: center</span><div class="demo-stage ji-stretch self-demo"><div class="box box-1 ps-center">1</div><div class="box box-2">2</div></div></div>
+          </div>
+          <div class="code-blocks"><div class="code-block"><span class="code-label">CSS</span><pre><code>.item {
+  justify-self: center;   /* inline axis */
+  align-self: center;     /* block axis  */
+  /* or shorthand */
+  place-self: center;
+}</code></pre></div></div>
+        </article>
+      </section>
+
+      <!-- ============================================================
+           SECTION 8 — GRID LAYOUT EXAMPLES
+           ============================================================ -->
+      <section class="content-section" id="grid-examples">
+        <header class="section-head">
+          <span class="section-tag">Section 8</span>
+          <h2>Grid Layout Examples</h2>
+          <p class="section-lead">Full page-level layouts where Grid truly shines.</p>
+        </header>
+
+        <!-- Magazine Layout -->
+        <article class="example-card">
+          <h3>Magazine Layout</h3>
+          <p>A featured article spanning columns alongside smaller stories.</p>
+          <div class="rendered">
+            <div class="ex-magazine">
+              <div class="mag-feature">Featured Story</div>
+              <div class="mag-item">Story A</div>
+              <div class="mag-item">Story B</div>
+              <div class="mag-item">Story C</div>
+              <div class="mag-item">Story D</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Admin Dashboard -->
+        <article class="example-card">
+          <h3>Admin Dashboard</h3>
+          <p>The classic dashboard: header, sidebar, stat cards, and content area.</p>
+          <div class="rendered">
+            <div class="ex-dashboard">
+              <div class="dh-header">Header</div>
+              <div class="dh-side">Sidebar</div>
+              <div class="dh-stat">Stat 1</div>
+              <div class="dh-stat">Stat 2</div>
+              <div class="dh-stat">Stat 3</div>
+              <div class="dh-main">Main Content</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Image Gallery -->
+        <article class="example-card">
+          <h3>Masonry-style Image Gallery</h3>
+          <p>A responsive grid where some tiles span multiple rows/columns.</p>
+          <div class="rendered">
+            <div class="ex-img-gallery">
+              <div class="ig-tall">Tall</div>
+              <div class="ig-wide">Wide</div>
+              <div class="ig-cell">3</div>
+              <div class="ig-cell">4</div>
+              <div class="ig-cell">5</div>
+              <div class="ig-big">Big</div>
+              <div class="ig-cell">7</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Portfolio Grid -->
+        <article class="example-card">
+          <h3>Portfolio Grid</h3>
+          <p>Auto-fitting project tiles that reflow on any screen size.</p>
+          <div class="rendered">
+            <div class="ex-portfolio">
+              <div class="pf-tile">Project 1</div>
+              <div class="pf-tile">Project 2</div>
+              <div class="pf-tile">Project 3</div>
+              <div class="pf-tile">Project 4</div>
+              <div class="pf-tile">Project 5</div>
+              <div class="pf-tile">Project 6</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- News Website -->
+        <article class="example-card">
+          <h3>News Website Layout</h3>
+          <p>Multi-region news page using grid-template-areas.</p>
+          <div class="rendered">
+            <div class="ex-news">
+              <div class="nw-top">Breaking News Bar</div>
+              <div class="nw-main">Lead Story</div>
+              <div class="nw-side">Trending</div>
+              <div class="nw-footer">More Headlines</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Blog Layout -->
+        <article class="example-card">
+          <h3>Blog Layout</h3>
+          <p>Header, hero, two-column content with sidebar, and footer.</p>
+          <div class="rendered">
+            <div class="ex-blog">
+              <div class="bl-header">Header</div>
+              <div class="bl-main">Article Body</div>
+              <div class="bl-side">Sidebar / TOC</div>
+              <div class="bl-footer">Footer</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Landing Page -->
+        <article class="example-card">
+          <h3>Landing Page</h3>
+          <p>Hero + features + CTA sections stacked in a clean grid.</p>
+          <div class="rendered">
+            <div class="ex-landing">
+              <div class="lp-hero">Hero</div>
+              <div class="lp-f">Feature 1</div>
+              <div class="lp-f">Feature 2</div>
+              <div class="lp-f">Feature 3</div>
+              <div class="lp-cta">Call To Action</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pricing Section -->
+        <article class="example-card">
+          <h3>Pricing Section</h3>
+          <p>Three pricing tiers in a responsive grid.</p>
+          <div class="rendered">
+            <div class="ex-pricing-grid">
+              <div class="pg-card">Basic</div>
+              <div class="pg-card pg-feat">Pro</div>
+              <div class="pg-card">Enterprise</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Responsive Product Grid -->
+        <article class="example-card">
+          <h3>Responsive Product Grid</h3>
+          <p>Products in a grid that fits 1→6 columns based on width — pure CSS.</p>
+          <div class="rendered">
+            <div class="ex-products">
+              <div class="prod">1</div><div class="prod">2</div><div class="prod">3</div>
+              <div class="prod">4</div><div class="prod">5</div><div class="prod">6</div>
+              <div class="prod">7</div><div class="prod">8</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Photo Gallery (simple grid) -->
+        <article class="example-card">
+          <h3>Photo Gallery</h3>
+          <p>Uniform square photo tiles in a clean grid.</p>
+          <div class="rendered">
+            <div class="ex-photos">
+              <div class="photo">1</div><div class="photo">2</div><div class="photo">3</div>
+              <div class="photo">4</div><div class="photo">5</div><div class="photo">6</div>
+              <div class="photo">7</div><div class="photo">8</div><div class="photo">9</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============================================================
+           SECTION 9 — FLEXBOX vs GRID
+           ============================================================ -->
+      <section class="content-section" id="comparison">
+        <header class="section-head">
+          <span class="section-tag">Section 9</span>
+          <h2>Flexbox vs Grid</h2>
+          <p class="section-lead">Both tools are powerful — here's how to choose between them, with the same layout built both ways.</p>
+        </header>
+
+        <div class="card-grid two-col">
+          <article class="info-card vs-flex">
+            <span class="info-emoji">↔️</span>
+            <h3>Flexbox</h3>
+            <p class="vs-tag">One-dimensional</p>
+            <ul class="check-list">
+              <li><strong>Best for:</strong> aligning items in a single direction</li>
+              <li><strong>Advantage:</strong> dynamic space distribution</li>
+              <li><strong>Advantage:</strong> perfect for components</li>
+              <li><strong>Disadvantage:</strong> awkward for 2D layouts</li>
+              <li><strong>Disadvantage:</strong> harder to align to specific columns</li>
+            </ul>
+          </article>
+          <article class="info-card vs-grid">
+            <span class="info-emoji">⊞</span>
+            <h3>CSS Grid</h3>
+            <p class="vs-tag">Two-dimensional</p>
+            <ul class="check-list">
+              <li><strong>Best for:</strong> full page &amp; complex layouts</li>
+              <li><strong>Advantage:</strong> control over rows <em>and</em> columns</li>
+              <li><strong>Advantage:</strong> named areas for readability</li>
+              <li><strong>Disadvantage:</strong> overkill for tiny components</li>
+              <li><strong>Disadvantage:</strong> more verbose for single rows</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3 class="subsection-title">Same Layout — Built Both Ways</h3>
+        <p>The "Holy Grail" layout: header, footer, and three columns (nav, main, aside).</p>
+
+        <div class="card-grid two-col">
+          <div class="demo"><span class="demo-label">Built with Flexbox</span>
+            <div class="holy-flex">
+              <div class="hf-band">Header</div>
+              <div class="hf-body">
+                <div class="hf-nav">Nav</div>
+                <div class="hf-main">Main</div>
+                <div class="hf-aside">Aside</div>
+              </div>
+              <div class="hf-band">Footer</div>
+            </div>
+          </div>
+          <div class="demo"><span class="demo-label">Built with Grid</span>
+            <div class="holy-grid">
+              <div class="hg-header">Header</div>
+              <div class="hg-nav">Nav</div>
+              <div class="hg-main">Main</div>
+              <div class="hg-aside">Aside</div>
+              <div class="hg-footer">Footer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <h4>🤝 The Golden Rule</h4>
+          <p>Use <strong>Grid for the page layout</strong> and <strong>Flexbox for the components inside</strong>. They compose beautifully — most professional sites use both.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 10 — PRACTICE CHALLENGES
+           ============================================================ -->
+      <section class="content-section" id="challenges">
+        <header class="section-head">
+          <span class="section-tag">Section 10</span>
+          <h2>Practice Challenges</h2>
+          <p class="section-lead">Test your skills. Each challenge shows the target layout and a reference solution.</p>
+        </header>
+
+        <article class="challenge-card">
+          <div class="challenge-head">
+            <span class="challenge-num">01</span>
+            <h3>Build a Navbar</h3>
+            <span class="difficulty easy">Easy · Flexbox</span>
+          </div>
+          <p>Create a responsive navbar with a logo, three links, and a button — all aligned and spaced evenly.</p>
+          <div class="challenge-target">
+            <nav class="ex-navbar"><div class="ex-brand">Logo</div><ul class="ex-nav-links"><li>Home</li><li>About</li><li>Contact</li></ul><button class="ex-btn">Go</button></nav>
+          </div>
+          <details class="solution">
+            <summary>Show solution</summary>
+<pre><code>.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="challenge-card">
+          <div class="challenge-head">
+            <span class="challenge-num">02</span>
+            <h3>Build a Centered Box</h3>
+            <span class="difficulty easy">Easy · Flexbox</span>
+          </div>
+          <p>Center a single box perfectly in the middle of a container, both vertically and horizontally.</p>
+          <div class="challenge-target">
+            <div class="ex-center"><div class="ex-center-box">🎯</div></div>
+          </div>
+          <details class="solution">
+            <summary>Show solution</summary>
+<pre><code>.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="challenge-card">
+          <div class="challenge-head">
+            <span class="challenge-num">03</span>
+            <h3>Build a Card Layout</h3>
+            <span class="difficulty medium">Medium · Grid</span>
+          </div>
+          <p>Three equal-width cards in a responsive row that wraps to one column on mobile.</p>
+          <div class="challenge-target">
+            <div class="ex-pricing-grid">
+              <div class="pg-card">Card 1</div>
+              <div class="pg-card">Card 2</div>
+              <div class="pg-card">Card 3</div>
+            </div>
+          </div>
+          <details class="solution">
+            <summary>Show solution</summary>
+<pre><code>.cards {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="challenge-card">
+          <div class="challenge-head">
+            <span class="challenge-num">04</span>
+            <h3>Build a Gallery</h3>
+            <span class="difficulty medium">Medium · Grid</span>
+          </div>
+          <p>A photo gallery with one large featured image and six smaller ones.</p>
+          <div class="challenge-target">
+            <div class="ex-img-gallery">
+              <div class="ig-big">Featured</div>
+              <div class="ig-cell">2</div><div class="ig-cell">3</div>
+              <div class="ig-cell">4</div><div class="ig-cell">5</div>
+              <div class="ig-cell">6</div><div class="ig-cell">7</div>
+            </div>
+          </div>
+          <details class="solution">
+            <summary>Show solution</summary>
+<pre><code>.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}</code></pre>
+          </details>
+        </article>
+
+        <article class="challenge-card">
+          <div class="challenge-head">
+            <span class="challenge-num">05</span>
+            <h3>Build a Dashboard</h3>
+            <span class="difficulty hard">Hard · Grid + Flexbox</span>
+          </div>
+          <p>Combine both: a Grid shell for the page (header/sidebar/main) with Flexbox inside the stat cards.</p>
+          <div class="challenge-target">
+            <div class="ex-dashboard">
+              <div class="dh-header">Header</div>
+              <div class="dh-side">Sidebar</div>
+              <div class="dh-stat">Stat 1</div>
+              <div class="dh-stat">Stat 2</div>
+              <div class="dh-stat">Stat 3</div>
+              <div class="dh-main">Main Content</div>
+            </div>
+          </div>
+          <details class="solution">
+            <summary>Show solution</summary>
+<pre><code>.dashboard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    "header header"
+    "side   main";
+}
+.stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}</code></pre>
+          </details>
+        </article>
+      </section>
+
+    </main>
+  </div><!-- /.layout -->
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">⬚</span>
+        <div>
+          <h3>CSS Flexbox &amp; Grid Explorer</h3>
+          <p>A complete visual guide to mastering modern CSS layout systems — Flexbox and CSS Grid.</p>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <p class="footer-tag">✦ Made for CSS Learning</p>
+        <p class="footer-copy">© 2026 CSS Flexbox &amp; Grid Explorer. Built with pure HTML5 &amp; CSS3.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
